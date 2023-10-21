@@ -1,5 +1,8 @@
-import 'package:fvm/fvm.dart' as fvm;
+import 'package:args/command_runner.dart';
+import 'package:fvm/fvm.dart';
 
-void main(List<String> arguments) {
-  print('Hello world: ${fvm.calculate()}!');
+void main(List<String> args) {
+  final runner = CommandRunner("fvm", "Flutter Version Manager")
+    ..addCommand(UseCommand());
+  runner.run(args);
 }

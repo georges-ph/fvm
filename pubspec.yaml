@@ -1,14 +1,14 @@
 name: fvm
-description: A sample command-line application.
+description: A CLI to manage Flutter SDK versions
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/georges-ph/fvm
 
 environment:
   sdk: ^3.1.4
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
+  args: ^2.4.2
+  path: ^1.8.3
 
 dev_dependencies:
   lints: ^2.0.0
