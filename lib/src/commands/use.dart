@@ -38,7 +38,7 @@ class UseCommand extends Command {
     // Check if fvm was used by checking if its directory exists
     final currentVersionDir = Directory(join(kFlutterHome, "flutter"));
     if (!currentVersionDir.existsSync()) {
-      print("fvm directory does not exist");
+      print("No versions installed");
       return;
     }
 
