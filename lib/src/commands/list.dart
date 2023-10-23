@@ -5,12 +5,15 @@ import 'package:fvm/src/constants.dart';
 import 'package:path/path.dart';
 
 class ListCommand extends Command {
-  // Initialize command with `name` and `description`
+  /// Initialize command with [name], [description] and [aliases]
   @override
   final name = "list";
 
   @override
   final description = "List all installed versions";
+
+  @override
+  final aliases = ['l'];
 
   ListCommand();
 

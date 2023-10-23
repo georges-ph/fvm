@@ -5,7 +5,7 @@ import 'package:fvm/src/constants.dart';
 import 'package:path/path.dart';
 
 class UseCommand extends Command {
-  /// Initialize command with `name` and `description`
+  /// Initialize command with [name] and [description]
   @override
   final name = "use";
 

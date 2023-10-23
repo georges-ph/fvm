@@ -8,12 +8,15 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 
 class InstallCommand extends Command {
-  // Initialize command with `name` and `description`
+  /// Initialize command with [name], [description] and [aliases]
   @override
   final name = "install";
 
   @override
   final description = "Install a Flutter SDK version";
+
+  @override
+  final aliases = ['i'];
 
   @override
   Future<void> run() async {
