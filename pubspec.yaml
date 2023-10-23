@@ -7,8 +7,9 @@ environment:
   sdk: ^3.1.4
 
 dependencies:
+  archive: ^3.4.6
   args: ^2.4.2
-  dart_console: ^1.2.0
+  console_bars: ^1.2.0
   http: ^1.1.0
   path: ^1.8.3
 
