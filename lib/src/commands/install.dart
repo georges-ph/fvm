@@ -14,45 +14,37 @@ class InstallCommand extends Command {
 
   @override
   void run() {
-    // Get not parsed args
+    /// Get not parsed args
     final rest = argResults?.rest ?? [];
     if (rest.isEmpty) {
       print("Missing version");
       return;
     }
 
-    // Check if only one argument is passed which is the version
-    if (rest.length > 1) {
-      print("Too many arguments");
-      return;
-    }
-
-    // Get version to install from args
+    /// Get version to install from args
     final version = rest.first;
 
-    // Set current working directory to flutter_home
+    /// Initialize `currentVersion` to be used later
+    String currentVersion = "";
+
+    /// Set current working directory to flutter_home
+    /// to prevent `OS Error: The system cannot move the file to a different disk drive.`
     Directory.current = Directory(kFlutterHome);
 
-    // Check if fvm was used by checking if its directory exists
+    /// Check if current Flutter version is the one to install
     final currentVersionDir = Directory(join(kFlutterHome, "flutter"));
-    if (!currentVersionDir.existsSync()) {
-      print("No versions installed");
-      return;
+    if (currentVersionDir.existsSync()) {
+      currentVersion = File(join(currentVersionDir.path, "version")).readAsStringSync();
+      if (currentVersion == version) {
+        print("Version $version is already installed");
+        return;
+      }
     }
 
-    // Get current version of flutter and check if it's already installed or not
-    final currentVersion =
-        File(join(currentVersionDir.path, "version")).readAsStringSync();
-    if (currentVersion == version) {
-      print("Version $version is already installed");
-      return;
-    }
-
-    // Check if the version to install is already insalled or not but not in use
-    final tobeUsedVersionDir =
-        Directory(join(kFlutterHome, "flutter_$version"));
-    if (tobeUsedVersionDir.existsSync()) {
-      print("Version $version is already installed");
+    /// Check if the version to install is installed or not
+    final toInstallVersionDir = Directory(join(kFlutterHome, "flutter_$version"));
+    if (toInstallVersionDir.existsSync()) {
+      print("Version $version is already installed installed");
       return;
     }
 
